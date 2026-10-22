@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-SkinSync is a Flutter-based mobile application designed to make skincare easier and more personalized. It helps users find skincare products that match their skin type and concerns while making it easier to build and maintain a daily skincare routine.
+Skincare Routine App is a Flutter-based mobile application designed to make skincare easier and more personalized. It helps users find skincare products that match their skin type and concerns while making it easier to build and maintain a daily skincare routine.
 
 Users can explore different skincare products, learn about their ingredients, and create their own morning and evening routines. The app also includes a skin diary where users can record their daily skin condition and track changes over time.
 
