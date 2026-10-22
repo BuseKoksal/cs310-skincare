@@ -24,6 +24,8 @@ Our goal is to make skincare more organized and accessible, especially for peopl
 
 ## Group Members
 
+Group Number: 11
+
 - Buse Köksal – 34281
 - Dença Anna Kuyumcu – 32016
 - Melis Tunar – 33987
