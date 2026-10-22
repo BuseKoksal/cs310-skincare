@@ -1,4 +1,4 @@
-# SkinSync – Skincare Routine App
+# Skincare Routine App
 
 ## Project Overview
 
