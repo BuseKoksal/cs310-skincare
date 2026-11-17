@@ -46,6 +46,15 @@ class _SkinProfileScreenState extends State<SkinProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Center(
+                child: Image.asset(
+                  'assets/images/skincare.jpg',
+                  height: 120,
+                  fit: BoxFit.contain,
+                ),
+              ),
+
+              const SizedBox(height: 20),
               const Text(
                 'Your Skin Profile',
                 style: TextStyle(
