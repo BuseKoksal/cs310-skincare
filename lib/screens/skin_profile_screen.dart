@@ -174,8 +174,12 @@ class _SkinProfileScreenState extends State<SkinProfileScreen> {
                           actions: [
                             TextButton(
                               onPressed: () {
-                                Navigator.pop(
-                                  dialogContext,
+                                Navigator.pop(dialogContext);
+
+                                Navigator.pushNamedAndRemoveUntil(
+                                  context,
+                                  '/main',
+                                      (route) => false,
                                 );
                               },
                               child: const Text('OK'),
