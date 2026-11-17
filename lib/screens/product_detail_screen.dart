@@ -1,6 +1,10 @@
 
 import 'package:flutter/material.dart';
+
 import '../models/product.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_spacing.dart';
+import '../utils/app_text_styles.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final Product product;
@@ -13,99 +17,133 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F7F0),
+      backgroundColor: AppColors.background,
+
       appBar: AppBar(
-        title: const Text('Product Details'),
-        backgroundColor: const Color(0xFFF8F7F0),
+        title: const Text(
+          'Product Details',
+          style: AppTextStyles.subtitle,
+        ),
+        backgroundColor: AppColors.background,
       ),
+
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // PRODUCT NETWORK IMAGE
               Center(
-                child: Image.network(
-                  product.imageUrl,
-                  height: 200,
-                  width: 200,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(
-                      Icons.spa,
-                      size: 120,
-                      color: Color(0xFF638568),
-                    );
-                  },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(
+                    AppSpacing.radiusLarge,
+                  ),
+                  child: Image.network(
+                    product.imageUrl,
+                    height: 200,
+                    width: 200,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        height: 200,
+                        width: 200,
+                        color: AppColors.lightSage,
+                        child: const Icon(
+                          Icons.spa,
+                          size: 100,
+                          color: AppColors.primary,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: AppSpacing.xl),
 
+              // PRODUCT NAME
               Text(
                 product.name,
-                style: const TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF334F38),
+                style: AppTextStyles.pageTitle.copyWith(
+                  color: AppColors.primaryDark,
                 ),
               ),
 
-              const SizedBox(height: 10),
+              const SizedBox(height: AppSpacing.sm),
 
+              // BRAND
               Text(
                 product.brand,
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
+                style: AppTextStyles.subtitle.copyWith(
+                  color: AppColors.textGray,
                 ),
               ),
 
-              const SizedBox(height: 25),
+              const SizedBox(height: AppSpacing.lg),
 
+              // CATEGORY
               const Text(
                 'Category',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+                style: AppTextStyles.sectionTitle,
               ),
-              Text(product.category),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: AppSpacing.sm),
 
+              Text(
+                product.category,
+                style: AppTextStyles.body,
+              ),
+
+              const SizedBox(height: AppSpacing.lg),
+
+              // RECOMMENDED SKIN TYPE
               const Text(
                 'Recommended Skin Type',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+                style: AppTextStyles.sectionTitle,
               ),
-              Text(product.skinType),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: AppSpacing.sm),
 
+              Text(
+                product.skinType,
+                style: AppTextStyles.body,
+              ),
+
+              const SizedBox(height: AppSpacing.lg),
+
+              // DESCRIPTION
               const Text(
                 'Description',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+                style: AppTextStyles.sectionTitle,
               ),
-              Text(product.description),
 
-              const SizedBox(height: 35),
+              const SizedBox(height: AppSpacing.sm),
 
+              Text(
+                product.description,
+                style: AppTextStyles.body,
+              ),
+
+              const SizedBox(height: AppSpacing.xl),
+
+              // ADD TO ROUTINE BUTTON
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF638568),
-                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.primary,
+                    foregroundColor: AppColors.white,
                     padding: const EdgeInsets.symmetric(
-                      vertical: 16,
+                      vertical: AppSpacing.md,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        AppSpacing.radius,
+                      ),
                     ),
                   ),
+
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -115,7 +153,11 @@ class ProductDetailScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: const Text('Add to Routine'),
+
+                  child: const Text(
+                    'Add to Routine',
+                    style: AppTextStyles.button,
+                  ),
                 ),
               ),
             ],

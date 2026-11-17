@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import 'diary/diary_screen.dart';
 import 'home/home_screen.dart';
-import 'products/product_list_screen.dart';
+import 'product_list_screen.dart';
 import 'routine/routine_screen.dart';
 
 class MainShell extends StatefulWidget {

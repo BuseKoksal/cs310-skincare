@@ -1,6 +1,10 @@
 
 import 'package:flutter/material.dart';
 
+import '../utils/app_colors.dart';
+import '../utils/app_text_styles.dart';
+import '../utils/app_spacing.dart';
+
 class SkinProfileScreen extends StatefulWidget {
   const SkinProfileScreen({super.key});
 
@@ -32,20 +36,21 @@ class _SkinProfileScreenState extends State<SkinProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F7F0),
+      backgroundColor: AppColors.background,
 
       appBar: AppBar(
         title: const Text('Skin Profile'),
-        backgroundColor: const Color(0xFFF8F7F0),
+        backgroundColor: AppColors.background,
       ),
 
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSpacing.lg),
 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // LOCAL SKINCARE IMAGE
               Center(
                 child: Image.asset(
                   'assets/images/skincare.jpg',
@@ -54,49 +59,46 @@ class _SkinProfileScreenState extends State<SkinProfileScreen> {
                 ),
               ),
 
-              const SizedBox(height: 20),
-              const Text(
+              const SizedBox(height: AppSpacing.lg),
+
+              // PAGE TITLE
+              Text(
                 'Your Skin Profile',
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF334F38),
+                style: AppTextStyles.pageTitle.copyWith(
+                  color: AppColors.primaryDark,
                 ),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpacing.sm),
 
+              // DESCRIPTION
               const Text(
                 'Tell us about your skin to personalize your routine.',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.grey,
-                ),
+                style: AppTextStyles.bodyGray,
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: AppSpacing.xl),
 
-              // SKIN TYPE
-              const Text(
+              // SKIN TYPE TITLE
+              Text(
                 'What is your skin type?',
-                style: TextStyle(
-                  fontSize: 20,
+                style: AppTextStyles.subtitle.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
 
-              const SizedBox(height: 15),
+              const SizedBox(height: AppSpacing.md),
 
+              // SKIN TYPE CHOICES
               Wrap(
-                spacing: 10,
-                runSpacing: 10,
+                spacing: AppSpacing.sm,
+                runSpacing: AppSpacing.sm,
 
                 children: skinTypes.map((type) {
                   return ChoiceChip(
                     label: Text(type),
                     selected: selectedSkinType == type,
-
-                    selectedColor: const Color(0xFFD4E5CE),
+                    selectedColor: AppColors.sageSelected,
 
                     onSelected: (selected) {
                       setState(() {
@@ -108,31 +110,29 @@ class _SkinProfileScreenState extends State<SkinProfileScreen> {
                 }).toList(),
               ),
 
-              const SizedBox(height: 35),
+              const SizedBox(height: AppSpacing.xl),
 
-              // SKIN CONCERNS
-              const Text(
+              // SKIN CONCERNS TITLE
+              Text(
                 'What are your skin concerns?',
-                style: TextStyle(
-                  fontSize: 20,
+                style: AppTextStyles.subtitle.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
 
-              const SizedBox(height: 15),
+              const SizedBox(height: AppSpacing.md),
 
+              // SKIN CONCERNS CHOICES
               Wrap(
-                spacing: 10,
-                runSpacing: 10,
+                spacing: AppSpacing.sm,
+                runSpacing: AppSpacing.sm,
 
                 children: skinConcerns.map((concern) {
                   return FilterChip(
                     label: Text(concern),
-
                     selected:
                     selectedConcerns.contains(concern),
-
-                    selectedColor: const Color(0xFFD4E5CE),
+                    selectedColor: AppColors.sageSelected,
 
                     onSelected: (selected) {
                       setState(() {
@@ -147,7 +147,7 @@ class _SkinProfileScreenState extends State<SkinProfileScreen> {
                 }).toList(),
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: AppSpacing.xl),
 
               // SAVE PROFILE BUTTON
               SizedBox(
@@ -187,17 +187,17 @@ class _SkinProfileScreenState extends State<SkinProfileScreen> {
                   },
 
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                    const Color(0xFF638568),
-                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.primary,
+                    foregroundColor: AppColors.white,
+
                     padding: const EdgeInsets.symmetric(
-                      vertical: 16,
+                      vertical: AppSpacing.md,
                     ),
                   ),
 
                   child: const Text(
                     'Save Profile',
-                    style: TextStyle(fontSize: 16),
+                    style: AppTextStyles.button,
                   ),
                 ),
               ),

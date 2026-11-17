@@ -5,7 +5,7 @@ import 'screens/auth/signup_screen.dart';
 import 'screens/auth/welcome_screen.dart';
 import 'screens/diary/add_diary_entry_screen.dart';
 import 'screens/main_shell.dart';
-import 'screens/profile/skin_profile_screen.dart';
+import 'screens/skin_profile_screen.dart';
 import 'utils/app_theme.dart';
 
 void main() {
