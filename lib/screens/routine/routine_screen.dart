@@ -6,6 +6,7 @@ import '../../models/product.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_spacing.dart';
 import '../../utils/app_text_styles.dart';
+import '../../widgets/primary_button.dart';
 import '../../widgets/routine_product_card.dart';
 
 class RoutineScreen extends StatefulWidget {
@@ -102,21 +103,10 @@ class _RoutineScreenState extends State<RoutineScreen> {
                       ),
               ),
               const SizedBox(height: AppSpacing.sm),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton.icon(
-                  onPressed: widget.onAddProduct,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    foregroundColor: AppColors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                    ),
-                  ),
-                  icon: const Icon(Icons.add),
-                  label: const Text('Add Product', style: AppTextStyles.button),
-                ),
+              PrimaryButton(
+                label: 'Add Product',
+                icon: Icons.add,
+                onPressed: widget.onAddProduct,
               ),
             ],
           ),
