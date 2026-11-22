@@ -32,7 +32,7 @@ Group Number: 11
 
 ## How to Run
 
-**Flutter version used:** Flutter 3.38.x (Dart 3.10.x) <!-- replace with the output of `flutter --version` -->
+**Flutter version used:** Flutter 3.47.6 (channel stable), Dart 3.13.5
 
 1. Install Flutter: https://docs.flutter.dev/get-started/install
 2. Clone the repository:
