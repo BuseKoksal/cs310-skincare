@@ -5,8 +5,13 @@ import '../../utils/app_text_styles.dart';
 
 class HomeScreen extends StatelessWidget {
   final ValueChanged<int> onNavigate;
+  final String userName;
 
-  const HomeScreen({super.key, required this.onNavigate});
+  const HomeScreen({
+    super.key,
+    required this.onNavigate,
+    this.userName = 'User',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Good Morning, Melis!',
+                      'Good Morning, $userName!',
                       style: AppTextStyles.subtitle.copyWith(
                         fontWeight: FontWeight.bold,
                         fontStyle: FontStyle.italic,
@@ -197,40 +202,16 @@ class HomeScreen extends StatelessWidget {
                       style: AppTextStyles.body,
                     ),
                     const SizedBox(height: AppSpacing.md),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () => onNavigate(1),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primary,
-                            foregroundColor: AppColors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                            ),
-                          ),
-                          child: const Text('See suggestions', style: AppTextStyles.button),
-                        ),
-                        InkWell(
-                          onTap: () => onNavigate(1),
+                    ElevatedButton(
+                      onPressed: () => onNavigate(1),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        foregroundColor: AppColors.white,
+                        shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: AppSpacing.md,
-                              vertical: AppSpacing.xs,
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                            ),
-                            child: const Icon(
-                              Icons.arrow_forward,
-                              color: AppColors.white,
-                              size: 18,
-                            ),
-                          ),
                         ),
-                      ],
+                      ),
+                      child: const Text('See suggestions', style: AppTextStyles.button),
                     ),
                   ],
                 ),
