@@ -1,10 +1,12 @@
 
 import 'package:flutter/material.dart';
 
+import '../data/routine_data.dart';
 import '../models/product.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_spacing.dart';
 import '../utils/app_text_styles.dart';
+import '../widgets/primary_button.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final Product product;
@@ -128,37 +130,21 @@ class ProductDetailScreen extends StatelessWidget {
               const SizedBox(height: AppSpacing.xl),
 
               // ADD TO ROUTINE BUTTON
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    foregroundColor: AppColors.white,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: AppSpacing.md,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        AppSpacing.radius,
+              PrimaryButton(
+                label: 'Add to Routine',
+                icon: Icons.add,
+                onPressed: () {
+                  final added = RoutineData.addProduct(product, true);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        added
+                            ? '${product.name} added to your morning routine!'
+                            : '${product.name} is already in your routine',
                       ),
                     ),
-                  ),
-
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          '${product.name} added to routine!',
-                        ),
-                      ),
-                    );
-                  },
-
-                  child: const Text(
-                    'Add to Routine',
-                    style: AppTextStyles.button,
-                  ),
-                ),
+                  );
+                },
               ),
             ],
           ),

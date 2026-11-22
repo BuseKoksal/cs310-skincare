@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 import '../utils/app_spacing.dart';
+import '../widgets/primary_button.dart';
 
 class SkinProfileScreen extends StatefulWidget {
   const SkinProfileScreen({super.key});
@@ -150,60 +151,43 @@ class _SkinProfileScreenState extends State<SkinProfileScreen> {
               const SizedBox(height: AppSpacing.xl),
 
               // SAVE PROFILE BUTTON
-              SizedBox(
-                width: double.infinity,
+              PrimaryButton(
+                label: 'Save Profile',
+                onPressed: selectedSkinType == null
+                    ? null
+                    : () {
+                  showDialog(
+                    context: context,
 
-                child: ElevatedButton(
-                  onPressed: selectedSkinType == null
-                      ? null
-                      : () {
-                    showDialog(
-                      context: context,
+                    builder: (dialogContext) {
+                      return AlertDialog(
+                        title: const Text(
+                          'Profile Saved!',
+                        ),
 
-                      builder: (dialogContext) {
-                        return AlertDialog(
-                          title: const Text(
-                            'Profile Saved!',
+                        content: Text(
+                          'Skin Type: $selectedSkinType\n'
+                              'Concerns: ${selectedConcerns.isEmpty ? "None" : selectedConcerns.join(", ")}',
+                        ),
+
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(dialogContext);
+
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                '/main',
+                                    (route) => false,
+                              );
+                            },
+                            child: const Text('OK'),
                           ),
-
-                          content: Text(
-                            'Skin Type: $selectedSkinType\n'
-                                'Concerns: ${selectedConcerns.isEmpty ? "None" : selectedConcerns.join(", ")}',
-                          ),
-
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(dialogContext);
-
-                                Navigator.pushNamedAndRemoveUntil(
-                                  context,
-                                  '/main',
-                                      (route) => false,
-                                );
-                              },
-                              child: const Text('OK'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    foregroundColor: AppColors.white,
-
-                    padding: const EdgeInsets.symmetric(
-                      vertical: AppSpacing.md,
-                    ),
-                  ),
-
-                  child: const Text(
-                    'Save Profile',
-                    style: AppTextStyles.button,
-                  ),
-                ),
+                        ],
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),

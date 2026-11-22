@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_spacing.dart';
 import '../../utils/app_text_styles.dart';
+import '../../widgets/primary_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -28,40 +29,18 @@ class WelcomeScreen extends StatelessWidget {
                 style: AppTextStyles.subtitle.copyWith(color: AppColors.textGray),
               ),
               const SizedBox(height: AppSpacing.md),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/signup');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    foregroundColor: AppColors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                    ),
-                  ),
-                  child: const Text('Create Account', style: AppTextStyles.button),
-                ),
+              PrimaryButton(
+                label: 'Create Account',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/signup');
+                },
               ),
               const SizedBox(height: AppSpacing.md),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/login');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    foregroundColor: AppColors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                    ),
-                  ),
-                  child: const Text('Log in', style: AppTextStyles.button),
-                ),
+              PrimaryButton(
+                label: 'Log in',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/login');
+                },
               ),
               const Spacer(flex: 3),
             ],
@@ -70,4 +49,4 @@ class WelcomeScreen extends StatelessWidget {
       ),
     );
   }
-}
+}

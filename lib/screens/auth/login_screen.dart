@@ -3,6 +3,8 @@ import '../../utils/app_colors.dart';
 import '../../utils/app_spacing.dart';
 import '../../utils/app_text_styles.dart';
 import '../../widgets/app_back_button.dart';
+import '../../widgets/app_text_field.dart';
+import '../../widgets/primary_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -49,26 +51,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: AppSpacing.xl),
                 const Text('Log into your account', style: AppTextStyles.sectionTitle),
                 const SizedBox(height: AppSpacing.md),
-                TextFormField(
+                AppTextField(
                   controller: _emailController,
+                  hint: 'Email Address',
                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    hintText: 'Email Address',
-                    filled: true,
-                    fillColor: AppColors.white,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.md,
-                      vertical: 14,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppSpacing.radius),
-                      borderSide: const BorderSide(color: AppColors.border),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppSpacing.radius),
-                      borderSide: const BorderSide(color: AppColors.border),
-                    ),
-                  ),
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please enter your email address';
@@ -80,26 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 const SizedBox(height: AppSpacing.md),
-                TextFormField(
+                AppTextField(
                   controller: _passwordController,
+                  hint: 'Password',
                   obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    filled: true,
-                    fillColor: AppColors.white,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.md,
-                      vertical: 14,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppSpacing.radius),
-                      borderSide: const BorderSide(color: AppColors.border),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppSpacing.radius),
-                      borderSide: const BorderSide(color: AppColors.border),
-                    ),
-                  ),
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please enter your password';
@@ -111,42 +81,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 const SizedBox(height: AppSpacing.lg),
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: _handleLogin,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primary,
-                      foregroundColor: AppColors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                      ),
-                    ),
-                    child: const Text('Log in', style: AppTextStyles.button),
-                  ),
-                ),
+                PrimaryButton(label: 'Log in', onPressed: _handleLogin),
                 const SizedBox(height: AppSpacing.md),
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/signup');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primary,
-                      foregroundColor: AppColors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                      ),
-                    ),
-                    child: const Text(
-                      "Sign-Up if you don't have an account",
-                      style: AppTextStyles.button,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+                PrimaryButton(
+                  label: "Sign-Up if you don't have an account",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signup');
+                  },
                 ),
               ],
             ),
@@ -155,4 +96,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-}
+}

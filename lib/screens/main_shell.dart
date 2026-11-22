@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/user_data.dart';
 import '../utils/app_colors.dart';
 import 'diary/diary_screen.dart';
 import 'home/home_screen.dart';
@@ -25,7 +26,7 @@ class _MainShellState extends State<MainShell> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> pages = [
-      HomeScreen(onNavigate: _changeTab),
+      HomeScreen(onNavigate: _changeTab, userName: UserData.name),
       const ProductListScreen(),
       RoutineScreen(onAddProduct: () => _changeTab(1)),
       const DiaryScreen(),

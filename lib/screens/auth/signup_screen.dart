@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../data/user_data.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_spacing.dart';
 import '../../utils/app_text_styles.dart';
 import '../../widgets/app_back_button.dart';
+import '../../widgets/app_text_field.dart';
+import '../../widgets/primary_button.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -20,6 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void _handleSignUp() {
     if (_formKey.currentState!.validate()) {
+      UserData.name = _nameController.text.trim();
       showDialog(
         context: context,
         barrierDismissible: false,
@@ -56,26 +60,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  InputDecoration _inputDecoration(String hint) {
-    return InputDecoration(
-      hintText: hint,
-      filled: true,
-      fillColor: AppColors.white,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.md,
-        vertical: 14,
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.radius),
-        borderSide: const BorderSide(color: AppColors.border),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.radius),
-        borderSide: const BorderSide(color: AppColors.border),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,9 +78,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Text('Sign-Up', style: AppTextStyles.pageTitle),
                 ),
                 const SizedBox(height: AppSpacing.lg),
-                TextFormField(
+                AppTextField(
                   controller: _nameController,
-                  decoration: _inputDecoration('Full Name'),
+                  hint: 'Full Name',
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please enter your full name';
@@ -105,10 +89,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
                 const SizedBox(height: AppSpacing.md),
-                TextFormField(
+                AppTextField(
                   controller: _ageController,
                   keyboardType: TextInputType.number,
-                  decoration: _inputDecoration('Age'),
+                  hint: 'Age',
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please enter your age';
@@ -121,10 +105,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
                 const SizedBox(height: AppSpacing.md),
-                TextFormField(
+                AppTextField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: _inputDecoration('Email Address'),
+                  hint: 'Email Address',
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please enter your email address';
@@ -136,10 +120,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
                 const SizedBox(height: AppSpacing.md),
-                TextFormField(
+                AppTextField(
                   controller: _passwordController,
                   obscureText: true,
-                  decoration: _inputDecoration('Password'),
+                  hint: 'Password',
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please create a password';
@@ -153,20 +137,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(height: AppSpacing.lg),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: SizedBox(
-                    height: 46,
-                    child: ElevatedButton(
-                      onPressed: _handleSignUp,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        foregroundColor: AppColors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                        ),
-                      ),
-                      child: const Text('Create Account', style: AppTextStyles.button),
-                    ),
+                  child: PrimaryButton(
+                    label: 'Create Account',
+                    onPressed: _handleSignUp,
+                    fullWidth: false,
                   ),
                 ),
               ],
@@ -176,4 +150,4 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
-}
+}

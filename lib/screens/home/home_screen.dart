@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_spacing.dart';
 import '../../utils/app_text_styles.dart';
+import '../../widgets/primary_button.dart';
 
 class HomeScreen extends StatelessWidget {
   final ValueChanged<int> onNavigate;
@@ -202,16 +203,10 @@ class HomeScreen extends StatelessWidget {
                       style: AppTextStyles.body,
                     ),
                     const SizedBox(height: AppSpacing.md),
-                    ElevatedButton(
+                    PrimaryButton(
+                      label: 'See suggestions',
                       onPressed: () => onNavigate(1),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        foregroundColor: AppColors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-                        ),
-                      ),
-                      child: const Text('See suggestions', style: AppTextStyles.button),
+                      fullWidth: false,
                     ),
                   ],
                 ),
@@ -257,4 +252,4 @@ class _QuickActionCard extends StatelessWidget {
       ),
     );
   }
-}
+}

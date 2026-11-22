@@ -29,3 +29,39 @@ Group Number: 11
 - Buse Köksal – 34281
 - Dença Anna Kuyumcu – 32016
 - Melis Tunar – 33987
+
+## How to Run
+
+**Flutter version used:** Flutter 3.38.x (Dart 3.10.x) <!-- replace with the output of `flutter --version` -->
+
+1. Install Flutter: https://docs.flutter.dev/get-started/install
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/BuseKoksal/cs310-skincare.git
+   cd cs310-skincare
+   ```
+3. Get the packages:
+   ```bash
+   flutter pub get
+   ```
+4. Start an Android emulator or iOS simulator, then run:
+   ```bash
+   flutter run
+   ```
+
+Network images need an internet connection. Placeholder data is used in this step; Firebase will be added in Step 3.
+
+## Project Structure
+
+```
+lib/
+├── main.dart        # app entry point and named routes
+├── data/            # placeholder data (routine, diary, user)
+├── models/          # Product, DiaryEntry
+├── screens/         # all screens
+├── utils/           # shared colors, text styles, spacing, theme, date helper
+└── widgets/         # reusable widgets (PrimaryButton, AppTextField, cards, back button)
+assets/
+├── fonts/           # Poppins (custom font)
+└── images/          # local images
+```
